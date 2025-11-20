@@ -1,0 +1,5 @@
+{
+  "name": "Chemical Equipment Parameter Visualizer",
+  "description": "A hybrid web-ready application for visualizing chemical equipment parameters, featuring advanced data analysis, anomaly detection, and professional reporting.",
+  "requestFramePermissions": []
+}

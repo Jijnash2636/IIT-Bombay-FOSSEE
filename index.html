@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChemEquip Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              secondary: "#8b5cf6",
+              accent: "#06b6d4",
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f1f5f9; /* Slate 100 - slightly darker than 50 for better card contrast */
+        color: #1e293b; /* Slate 800 */
+        min-height: 100vh;
+      }
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
+      }
+      
+      /* Print Styles */
+      @media print, screen and (pdf-generation) {
+        @page {
+          size: A4;
+          margin: 15mm;
+        }
+        body {
+          background: white !important;
+          color: black !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        #root {
+          background: white !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+        /* Ensure charts and backgrounds print */
+        * {
+          box-shadow: none !important;
+          text-shadow: none !important;
+        }
+        /* Avoid breaking charts across pages */
+        .print-break-avoid {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        /* Force new page */
+        .print-break-before {
+          break-before: page;
+          page-break-before: always;
+        }
+      }
+      
+      /* PDF Generation Styles */
+      .pdf-generation {
+        background: white !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      .pdf-generation .no-print {
+        display: none !important;
+      }
+      
+      /* Print-specific chart styles */
+      @media print {
+        .recharts-wrapper {
+          transform: none !important;
+        }
+        
+        .recharts-surface {
+          transform: none !important;
+        }
+        
+        /* Ensure charts render properly in print */
+        .recharts-responsive-container {
+          width: 100% !important;
+          height: auto !important;
+        }
+        
+        /* Prevent charts from splitting across pages */
+        .chart-container {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+        
+        .print-break-avoid {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+      }
+      
+      /* PDF generation chart styles */
+      .pdf-generation .recharts-wrapper,
+      .pdf-generation .recharts-surface {
+        transform: none !important;
+      }
+      
+      .pdf-generation .recharts-responsive-container {
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* Prevent charts from splitting across pages in PDF generation */
+      .pdf-generation .chart-container,
+      .pdf-generation .print-break-avoid {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "html2canvas": "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.esm.js",
+    "jspdf": "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
