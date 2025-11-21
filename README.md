@@ -1,7 +1,7 @@
 # Chemical Equipment Parameter Visualizer
 
 A comprehensive web application for analyzing and visualizing chemical equipment parameter data. This tool allows users to upload CSV files containing equipment data, analyze key metrics, and create professional reports with interactive charts.
-
+Deployment link for web version: https://jijnashfosseeproject.vercel.app/
 ## Table of Contents
 
 - [Features](#features)
